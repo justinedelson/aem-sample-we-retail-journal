@@ -185,6 +185,38 @@
         </plugins>
       </build>
     </profile>
+        <profile>
+            <id>cmBuild</id>
+            <activation>
+                <property>
+                        <name>env.CM_BUILD</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                      <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <id>install-chrome</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>/bin/bash</executable>
+                                    <arguments>
+                                      <argument>install-chrome.sh</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
   </profiles>
 
   <!--<profiles>
